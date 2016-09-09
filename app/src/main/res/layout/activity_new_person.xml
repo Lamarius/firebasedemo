@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPersonActivity">
+
+    <EditText
+        android:id="@+id/field_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="First name"
+        android:maxLines="1"
+        android:inputType="textCapSentences|textPersonName"
+        android:imeOptions="actionNext" />
+
+
+    <EditText
+        android:id="@+id/field_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/field_first_name"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:hint="Last name"
+        android:maxLines="1"
+        android:inputType="textCapSentences|textPersonName"
+        android:imeOptions="actionNext" />
+
+
+    <EditText
+        android:id="@+id/field_zip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/field_last_name"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:hint="Zip code"
+        android:maxLines="1"
+        android:inputType="date"
+        android:imeOptions="actionNext" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/field_zip">
+
+        <EditText
+            android:id="@+id/field_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Date of birth (MM/dd/yyyy)"
+            android:maxLines="1"
+            android:inputType="date"
+            android:imeOptions="actionDone" />
+
+
+        <ImageButton
+            android:id="@+id/button_select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_date_range_black_24dp"
+            style="?android:attr/borderlessButtonStyle" />
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_submit_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_check_white_24dp" />
+
+
+</RelativeLayout>
