@@ -1,12 +1,12 @@
-package com.projects.bobby.servicefusiondemo.viewHolder;
+package com.projects.bobby.firebasedemo.viewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.projects.bobby.servicefusiondemo.R;
-import com.projects.bobby.servicefusiondemo.models.Person;
+import com.projects.bobby.firebasedemo.R;
+import com.projects.bobby.firebasedemo.models.Person;
 
 /**
  * Created by bobby on 9/6/16.

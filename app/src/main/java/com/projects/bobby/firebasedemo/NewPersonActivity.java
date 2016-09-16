@@ -1,11 +1,11 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
-import com.projects.bobby.servicefusiondemo.models.Person;
+import com.projects.bobby.firebasedemo.models.Person;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

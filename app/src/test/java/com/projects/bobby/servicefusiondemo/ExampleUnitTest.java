@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import org.junit.Test;
 

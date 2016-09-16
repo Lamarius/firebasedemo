@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.projects.bobby.servicefusiondemo.models.Person;
+import com.projects.bobby.firebasedemo.models.Person;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

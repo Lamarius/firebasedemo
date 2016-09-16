@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import android.content.Intent;
 import android.os.Bundle;

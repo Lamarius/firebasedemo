@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,8 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.projects.bobby.servicefusiondemo.models.Person;
-import com.projects.bobby.servicefusiondemo.viewHolder.PersonViewHolder;
+import com.projects.bobby.firebasedemo.models.Person;
+import com.projects.bobby.firebasedemo.viewHolder.PersonViewHolder;
 
 public class MainActivity extends AppCompatActivity {
 

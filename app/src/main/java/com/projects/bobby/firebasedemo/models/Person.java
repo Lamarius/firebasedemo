@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo.models;
+package com.projects.bobby.firebasedemo.models;
 
 import java.util.Date;
 import java.util.HashMap;

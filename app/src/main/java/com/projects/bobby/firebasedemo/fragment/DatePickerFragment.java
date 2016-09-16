@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo.fragment;
+package com.projects.bobby.firebasedemo.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.projects.bobby.servicefusiondemo.R;
+import com.projects.bobby.firebasedemo.R;
 
 import java.util.Calendar;
 import java.util.Locale;

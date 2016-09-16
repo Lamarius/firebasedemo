@@ -1,4 +1,4 @@
-package com.projects.bobby.servicefusiondemo;
+package com.projects.bobby.firebasedemo;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
-import com.projects.bobby.servicefusiondemo.fragment.DatePickerFragment;
+import com.projects.bobby.firebasedemo.fragment.DatePickerFragment;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
