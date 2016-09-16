@@ -71,9 +71,9 @@
 
         <ImageButton
             android:id="@+id/button_select_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_date_range_black_24dp"
             style="?android:attr/borderlessButtonStyle" />
 

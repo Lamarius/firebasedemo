@@ -1,5 +1,7 @@
 package com.projects.bobby.servicefusiondemo;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
-                    return;
                 }
             }
         };
@@ -76,14 +78,58 @@ public class MainActivity extends AppCompatActivity {
                 Person.class,
                 R.layout.item_person,
                 PersonViewHolder.class,
-                mDatabase.child("People").orderByChild("firstName")) {
+                mDatabase.child("people").orderByChild("firstName")) {
 
             @Override
             protected void populateViewHolder(PersonViewHolder viewHolder, Person model, int position) {
-                viewHolder.bindToPerson(model);
+                final DatabaseReference personRef = getRef(position);
+                viewHolder.bindToPerson(model, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View personView) {
+                        final DatabaseReference ref = mDatabase.child("people").child(personRef.getKey());
+                        switch (personView.getId()) {
+                            case R.id.edit:
+                                Intent intent = new Intent(personView.getContext(), EditPersonActivity.class);
+                                intent.putExtra(EditPersonActivity.EXTRA_PERSON_KEY, personRef.getKey());
+                                startActivity(intent);
+                                //onEditClicked(ref);
+                                break;
+                            case R.id.delete:
+                                onDeleteClicked(ref);
+                                break;
+                        }
+                    }
+                });
             }
         };
         mRecycler.setAdapter(mAdapter);
+    }
+
+    private void onEditClicked(final DatabaseReference personRef) {
+        final Intent intent = new Intent(this, EditPersonActivity.class);
+        intent.putExtra(EditPersonActivity.EXTRA_PERSON_KEY, personRef.getKey());
+        startActivity(intent);
+    }
+
+    private void onDeleteClicked(final DatabaseReference personRef) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        // Delete item.
+                        personRef.removeValue();
+                        break;
+                    default:
+                        // Do nothing.
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
     }
 
     @Override
