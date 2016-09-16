@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Initialize RecyclerView
-        mRecycler = (RecyclerView) findViewById(R.id.person_recyclerView);
+        mRecycler = (RecyclerView) findViewById(R.id.recyclerView_person);
         mManager = new LinearLayoutManager(this);
         mRecycler.setLayoutManager(mManager);
 

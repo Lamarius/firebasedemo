@@ -59,15 +59,15 @@ public class LoginActivity extends AppCompatActivity implements
         isRegistering = false;
 
         // Views
-        mEmailField = (EditText) findViewById(R.id.email);
-        mPasswordField = (EditText) findViewById(R.id.password);
-        mConfirmPasswordField = (EditText) findViewById(R.id.confirm_password);
-        mToggleLoginRegisterLink = (TextView) findViewById(R.id.link_to_toggle_login_register);
-        mEmailLoginButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailField = (EditText) findViewById(R.id.field_email);
+        mPasswordField = (EditText) findViewById(R.id.field_password);
+        mConfirmPasswordField = (EditText) findViewById(R.id.field_confirm_password);
+        mToggleLoginRegisterLink = (TextView) findViewById(R.id.link_toggle_login_register);
+        mEmailLoginButton = (Button) findViewById(R.id.button_email_sign_in);
 
         // Buttons
         mEmailLoginButton.setOnClickListener(this);
-        findViewById(R.id.google_sign_in_button).setOnClickListener(this);
+        findViewById(R.id.button_google_sign_in).setOnClickListener(this);
 
         // Links
         mToggleLoginRegisterLink.setOnClickListener(this);
@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.email_sign_in_button:
+            case R.id.button_email_sign_in:
                 // Either sign in or register, depending on what the user is trying to do.
                 if (isRegistering) {
                     registerWithEmail(mEmailField.getText().toString(), mPasswordField.getText().toString());
@@ -127,10 +127,10 @@ public class LoginActivity extends AppCompatActivity implements
                     signInWithEmail(mEmailField.getText().toString(), mPasswordField.getText().toString());
                 }
                 break;
-            case R.id.google_sign_in_button:
+            case R.id.button_google_sign_in:
                 signInWithGoogle();
                 break;
-            case R.id.link_to_toggle_login_register:
+            case R.id.link_toggle_login_register:
                 toggleLoginRegister();
                 break;
         }

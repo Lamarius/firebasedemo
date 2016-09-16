@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <AutoCompleteTextView
-                android:id="@+id/email"
+                android:id="@+id/field_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_email"
@@ -34,7 +34,7 @@
 
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/field_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
@@ -45,7 +45,7 @@
 
 
             <EditText
-                android:id="@+id/confirm_password"
+                android:id="@+id/field_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_confirm_password"
@@ -57,7 +57,7 @@
 
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/button_email_sign_in"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
 
 
             <TextView
-                android:id="@+id/link_to_toggle_login_register"
+                android:id="@+id/link_toggle_login_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -89,7 +89,7 @@
 
 
             <com.google.android.gms.common.SignInButton
-                android:id="@+id/google_sign_in_button"
+                android:id="@+id/button_google_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
