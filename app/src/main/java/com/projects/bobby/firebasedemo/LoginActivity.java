@@ -246,13 +246,14 @@ public class LoginActivity extends AppCompatActivity implements
             mConfirmPasswordField.setVisibility(View.GONE);
             mEmailLoginButton.setText(R.string.action_sign_in);
             mToggleLoginRegisterLink.setText(R.string.link_register);
-
         } else {
             mPasswordField.setImeOptions(EditorInfo.IME_ACTION_NEXT);
             mConfirmPasswordField.setVisibility(View.VISIBLE);
             mEmailLoginButton.setText(R.string.action_register);
             mToggleLoginRegisterLink.setText(R.string.link_sign_in);
         }
+
+        isRegistering = !isRegistering;
     }
 
     private boolean validateForm() {
@@ -273,7 +274,7 @@ public class LoginActivity extends AppCompatActivity implements
         if (TextUtils.isEmpty(password)) {
             mPasswordField.setError(REQUIRED);
             valid = false;
-        } else if(password.length() < 6) {
+        } else if(password.length() < 6 && isRegistering) {
             mPasswordField.setError(PASSWORD_IS_TOO_SMALL);
             valid = false;
         } else {
