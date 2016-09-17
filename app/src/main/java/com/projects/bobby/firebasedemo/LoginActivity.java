@@ -37,6 +37,12 @@ public class LoginActivity extends AppCompatActivity implements
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
+    // Error messages
+    private static final String REQUIRED = "Required.";
+    private static final String PASSWORDS_DO_NOT_MATCH = "Passwords do not match.";
+    private static final String PASSWORD_IS_TOO_SMALL = "Password is too small.";
+    private static final String EMAIL_IS_INVALID = "Email is invalid.";
+
     private boolean isRegistering;
 
     private EditText mEmailField;
@@ -254,10 +260,10 @@ public class LoginActivity extends AppCompatActivity implements
 
         String email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailField.setError("Required.");
+            mEmailField.setError(REQUIRED);
             valid = false;
         } else if (!email.matches("^.*@(.*\\..+)+$")) {
-            mEmailField.setError("Invalid email address.");
+            mEmailField.setError(EMAIL_IS_INVALID);
             valid = false;
         } else {
             mEmailField.setError(null);
@@ -265,10 +271,10 @@ public class LoginActivity extends AppCompatActivity implements
 
         String password = mPasswordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPasswordField.setError("Required.");
+            mPasswordField.setError(REQUIRED);
             valid = false;
         } else if(password.length() < 6) {
-            mPasswordField.setError("Password too small.");
+            mPasswordField.setError(PASSWORD_IS_TOO_SMALL);
             valid = false;
         } else {
             mPasswordField.setError(null);
@@ -276,7 +282,7 @@ public class LoginActivity extends AppCompatActivity implements
 
         String confirmPassword = mConfirmPasswordField.getText().toString();
         if (isRegistering && !confirmPassword.equals(password)) {
-            mConfirmPasswordField.setError("Passwords do no match.");
+            mConfirmPasswordField.setError(PASSWORDS_DO_NOT_MATCH);
             valid = false;
         } else {
             mConfirmPasswordField.setError(null);

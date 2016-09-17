@@ -3,8 +3,6 @@ package com.projects.bobby.firebasedemo;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,9 +25,6 @@ import com.projects.bobby.firebasedemo.viewHolder.PersonViewHolder;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    public static final String ANONYMOUS = "anonymous";
-    private String mUsername;
-    private SharedPreferences mSharedPreferences;
 
     private DatabaseReference mDatabase;
 
@@ -46,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Set default username to anonymous.
-        mUsername = ANONYMOUS;
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -89,13 +81,10 @@ public class MainActivity extends AppCompatActivity {
                         final DatabaseReference ref = mDatabase.child("people").child(personRef.getKey());
                         switch (personView.getId()) {
                             case R.id.edit:
-                                Intent intent = new Intent(personView.getContext(), EditPersonActivity.class);
-                                intent.putExtra(EditPersonActivity.EXTRA_PERSON_KEY, personRef.getKey());
-                                startActivity(intent);
-                                //onEditClicked(ref);
+                                onEditPersonClicked(ref);
                                 break;
                             case R.id.delete:
-                                onDeleteClicked(ref);
+                                onDeletePersonClicked(ref);
                                 break;
                         }
                     }
@@ -105,24 +94,18 @@ public class MainActivity extends AppCompatActivity {
         mRecycler.setAdapter(mAdapter);
     }
 
-    private void onEditClicked(final DatabaseReference personRef) {
-        final Intent intent = new Intent(this, EditPersonActivity.class);
+    private void onEditPersonClicked(final DatabaseReference personRef) {
+        Intent intent = new Intent(this, EditPersonActivity.class);
         intent.putExtra(EditPersonActivity.EXTRA_PERSON_KEY, personRef.getKey());
         startActivity(intent);
     }
 
-    private void onDeleteClicked(final DatabaseReference personRef) {
+    private void onDeletePersonClicked(final DatabaseReference personRef) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        // Delete item.
-                        personRef.removeValue();
-                        break;
-                    default:
-                        // Do nothing.
-                        break;
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    personRef.removeValue();
                 }
             }
         };
@@ -170,10 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.sign_out_menu:
                 mAuth.signOut();
-                mUsername = ANONYMOUS;
                 startActivity(new Intent(this, LoginActivity.class));
-                return true;
-            case R.id.settings_menu:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
